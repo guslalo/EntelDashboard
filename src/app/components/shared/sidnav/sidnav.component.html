@@ -1,0 +1,25 @@
+<mz-sidenav 
+  [id]="'sidenav-demo'"
+  [collapseButtonId]="'btn-sidenav-demo'">
+  <mz-sidenav-header>
+    <a href="#" class="brand-logo">
+      <img src="assets/img/adscreen.png">
+    </a>
+    <!--btn sidenav-->
+    <button mz-button class="btnSideNav" id="btn-sidenav-demo" (click)="cerrar()">
+      <i class="material-icons">menu</i>
+    </button><!--/btn sidenav-->
+  </mz-sidenav-header>
+
+  <mz-sidenav-subheader>Menú</mz-sidenav-subheader>
+  <mz-sidenav-link>
+    <a href="javascript:;">Link</a>
+  </mz-sidenav-link>
+
+  <mz-sidenav-link [active]="true">
+    <a href="javascript:;">Link</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a href="javascript:;" class="waves-effect">Link</a>
+  </mz-sidenav-link>
+</mz-sidenav>

@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body, app-root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  #sideNavBtn {
+      display: inline-block;
+  }
+#btn-sidenav-demo{
+    background:#37474f;
+    padding:0 15px;
+    display:inline-block;
+    margin-right:20px;
+    i{
+        line-height: 35px;
+    }
+}
+
+.nav-extended {
+    
+    .nav-wrapper {
+      padding: 0 20px;
+    }
+    .nav-content {
+        background: #37474f    !important;
+    }
+ 
+}
+
+table {
+    color: #37474f;
+    thead {
+        background: #627781;
+        th {
+            color:#ffffff;
+            background: #627781;
+        }
+    }
+    td, th {
+        font-size: 14px;
+        text-align: center;
+        color: #37474f;
+    }/*
+    tr {
+        td{
+            font-size: 12px;
+        }
+       
+    }*/
+    tbody tr:nth-of-type(2n+1) {
+        background-color: rgba(69,90,100, 0.07);
+    }
+    .boxbadge {
+        display: inline-block;
+        width: 100%;
+        .badge {
+            height: auto ;
+        }
+       
+    }
+    .accesorioDestacado {
+        width: 300px;
+    }
+    .version{
+        width:80px;
+    }
+    #tipoPrecioValoresAccesorio {
+        width:250px;
+    }
+    .badge-light {
+        color: #212529;
+        background-color: #f8f9fa;
+        border: 1px solid #D8D8D8;
+        font-size: 14px;
+        font-weight: normal;
+        height: auto ;
+    }
+    .protegido {
+        width:100%;
+        display:block;
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0px;
+        }  
+        * {
+            display: inline-block;
+         
+        }
+        .badge {
+            display:block;
+        }
+        i {
+            margin-left: 10px;
+            vertical-align: middle;
+            &.no {
+                color: red;
+            }
+            &.si {
+                color: green;
+            }
+        }
+    }
+    
+}
+
+
+
+
+.table {
+    .semibold {
+        font-weight: 600;
+    }
+    .iconEspecificacion {
+        
+    }
+}
+
+
+.table-hover tbody tr:hover {
+     background-color: rgba(69,90,100, 0.3);
+}
+.ver {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    *{
+        display: inline-block;
+    }
+    i {
+        font-size: 18px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+}
+.table th, .table td {
+    padding: 0.6rem;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+.marca {
+    font-size: 14px;
+    font-weight: normal;
+}
+.modelo {
+    font-size: 14px;
+    font-weight: bold;
+}
+.version {
+    font-size: 14px; 
+    font-weight: 600;
+}
+
+mz-sidenav-header li{
+    background: #455a64  !important;
+    padding: 0 15px;
+    position: relative;
+    .brand-logo {
+        padding: 0px 0px 0px 0px;
+        display: inline-block;
+    }
+    .btnSideNav {
+        background: #37474f  ;
+        padding: 0 15px;
+        display: inline-block;
+        margin-right:20px;
+        position: absolute;
+        right: 0px;
+        top: 14px;
+        i{
+            line-height: 35px;
+        }
+    }
+    
+}
+.brand-logo {
+    img {
+        width:200px;
+        margin-top:14px;
+        display: inline-block;
+    }
+}

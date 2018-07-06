@@ -1,0 +1,218 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col s12">
+        <h5>Lista de equipos</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+        <table class="table  table-hover table-striped mt-3">
+            <!--thead-->
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Marca</th>
+                <th id="modelo" scope="col">Modelo</th>
+                <th id="version" scope="col">Versión</th>
+                <th id="especificaciones" scope="col">Detalle</th>
+                <th scope="col">Equipo protegido</th>
+                <th scope="col">Entel Blue</th>
+                <th scope="col" style="width:200px;">Plan destacado</th>
+                <!--<th scope="col">Cuota plan destacado</th>-->
+                <th scope="col">Venta plan destacado</th>
+                <th scope="col">Cuota E. liberado</th>
+                <th scope="col">Venta E. liberado</th>
+                <th class="accesorioDestacado" cope="col">Accesorio destacado</th>
+                <th id="tipoPrecioValoresAccesorio" scope="col">Tipo Precio accesorio y valores</th>
+              </tr>
+            </thead><!--thead-->
+            <!--tbody-->
+            <tbody>
+              <tr *ngFor="let equipo of equipos" id="{{equipo.id}}">
+                <th class="marca" scope="row">{{equipo.provider.name}}</th> 
+                <td class="modelo">{{equipo.name}}</td>
+                <td class="version">
+                  <span class="badge badge-light protegido" *ngFor="let item of equipo.equipment_details; let i = index">
+                    <div class="version">{{item.memory}} GB</div>
+                  </span>
+                </td>
+        
+                <!--ver mas-->
+                <td>
+                  <a class="ver modal-trigger" href="#modal1" (click)="captureId(equipo.id)"><!--(click)="detalleModal.openModal()"(click)="openServiceModal()" (click)="captureId(equipo.id)"-->
+                    <span>Ver<i class="material-icons"> navigate_next</i></span>
+                    <!--<i class="material-icons">launch </i>-->
+                  </a>
+                </td><!--ver mas-->
+                <td>
+                  <div *ngFor="let item of equipo.equipment_details; let i = index" style="display: none;">
+                      <div *ngIf="i != 0">
+                        <span class="badge badge-light protegido">
+                          <!--<div class="version">Versión {{item.memory}} gb</div>-->
+                          <div *ngFor="let item of item.adscreen">
+                            <span *ngIf="item.program == true; else noProtegido">
+                              <i class="material-icons si"> done</i>
+                            </span>
+                            <ng-template #noProtegido>              
+                              <i class="material-icons no">clear</i>
+                            </ng-template>
+                          </div>
+                        </span>
+                      </div>
+                    </div>
+        
+                  <!-- equipo protegido-->
+                  <span class=" protegido" *ngFor="let item of equipo.equipment_details; let i = index">
+                     <!--<div class="version">Versión {{item.memory}} gb</div>-->
+                    <div *ngFor="let item of item.adscreen">
+                      <span *ngIf="item.program == true; else noProtegido">
+                        <i class="material-icons si"> done</i>
+                      </span>
+                      <ng-template #noProtegido>              
+                        <i class="material-icons no">clear</i>
+                      </ng-template>
+                    </div>
+                  </span><!--/equipo protegido-->
+                </td>
+                <!-- entel blue -->
+                <td> 
+                  <span class=" protegido" *ngFor="let item of equipo.equipment_details">
+                    <div *ngFor="let item of item.adscreen">
+                      <span *ngIf="item.blue == true; else noProtegido">
+                        <i class="material-icons si"> done</i>
+                      </span>
+                      <ng-template #noProtegido>              
+                        <i class="material-icons no">clear</i>
+                      </ng-template>
+                    </div>
+                  </span>
+                </td><!-- entel blue -->
+                <!-- plan destacado -->
+                <td>
+                  
+                  <span class="badge badge-light protegido" *ngFor="let item of equipo.equipment_details">
+              
+                    <div *ngFor="let item2 of item.adscreen">
+                      <div *ngFor="let item3 of item2.plan">
+                        <div *ngIf="item3.name == null; else plandestacado">
+                            <span class="badge badge-light protegido">-</span>
+                        </div>
+                        <ng-template #plandestacado>
+                          {{item3.name}} - ${{item3.price_2}}
+                        </ng-template>  
+                      </div>
+                     
+                    </div>
+                  </span>
+                </td><!-- plan destacado -->
+                <!-- cuota plan destacado 
+                <td>
+                  
+                  <span class="badge badge-light protegido" *ngFor="let item2 of equipo.equipment_details">
+            
+                    <div *ngFor="let item3 of item2.adscreen">
+                      <div *ngFor="let item4 of item3.plan">
+                        ${{item4.price_2}}
+                      </div>
+                    </div>
+                  </span>
+                </td>cuota destacado -->
+                 <!--Precio venta plan destacado-->
+                <td>
+                 
+                  <span class="badge badge-light protegido" *ngFor="let item2 of equipo.equipment_details">
+                     <!--<div class="version">Versión {{item.memory}} gb</div>-->
+                    <div *ngFor="let item3 of item2.adscreen">
+                      <div *ngFor="let item4 of item3.equipment_plan">
+                          ${{item4.price_1}}
+                      </div>
+                    </div>
+                  </span>
+                </td><!-- Precio venta plan destacado -->
+                <!--Precio venta plan destacado-->
+                <td>
+                  
+                  <span class="badge badge-light protegido" *ngFor="let item2 of equipo.equipment_details">
+                    <div>
+                      ${{item2.price_1 * 1000 / 12 | number: '1.0-0' }}
+                    </div>
+                  </span>
+                </td><!-- Precio venta plan destacado -->
+                <!--Precio venta equipo liberado-->
+                <td>
+                 
+                  <span class="badge badge-light protegido" *ngFor="let item2 of equipo.equipment_details">
+                    <div>
+                      ${{item2.price_1 }}
+                    </div>
+                  </span>
+                </td><!--Precio venta equipo liberado -->
+                <!--Accesorio destacado-->
+                <td>
+                  <span class="badge badge-light protegido" *ngFor="let item of equipo.equipment_details">
+                    <div *ngFor="let item2 of item.adscreen">
+                      <div *ngFor="let item4 of item2.accessory_details">
+                        <span class="semibold">{{item4.provider_name}}</span> - {{item4.accessory_name}}
+                      </div>
+                    </div>
+                  </span>
+                </td><!--/Accesorio destacado-->
+                <!--Tipo Precio accesorio y valores-->
+                <td> 
+                  <div class="boxbadge" *ngFor="let item of equipo.equipment_details">
+                    <div *ngFor="let item2 of item.adscreen">
+                      <div *ngFor="let item3 of item2.accessory_details">
+                        <span class="badge badge-light protegido">
+                          Precio {{item3.type_price.name}}<br>
+                          <div *ngIf="item3.price_1 === item3.price_2; else promo">
+                            ${{item3.price_2}}
+                          </div>
+                          <ng-template #promo>
+                            Antes: $<del>{{item3.price_1}}</del>
+                            - Ahora: <span class="semibold">${{item3.price_2}} </span>
+                          </ng-template>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </td><!--/Tipo Precio accesorio y valores-->
+              </tr>           
+            </tbody>
+          </table> 
+    </div> 
+  </div>    
+</div>
+
+<!--
+<mz-modal #detalleModal [fixedFooter]="false" [bottomSheet]="false" [options]="modalOptions">
+    <mz-modal-header>
+      <h4>Modal Title</h4>
+    </mz-modal-header>
+    <mz-modal-content>
+
+        <div class="modal-body" *ngFor="let item of equipoId">
+            <h4>Equipo:</h4>
+            <div>{{item.name}}</div>
+            <hr>
+            <h4>Especificaciones generales:</h4>
+            <div class="row">
+              <div class="col-4">
+                  <img [src]="item.main_image_resolutions.image_128">
+              </div>
+              <div class="col-8 pl-0">
+                  <div *ngFor="let features of item.features">
+                    <span><img class="iconEspecificacion" [src]="features.file.image_resolutions.image_24"></span> {{features.description}}
+                  </div>
+              </div>
+            </div>  
+          </div>
+    </mz-modal-content>
+    <mz-modal-footer>
+      <button mz-button [flat]="true" mz-modal-close>Cerrar</button>
+    </mz-modal-footer>
+  </mz-modal>
+-->
+
+
+<app-equipo-detalle [idItem]="idItem"></app-equipo-detalle><!---->
+

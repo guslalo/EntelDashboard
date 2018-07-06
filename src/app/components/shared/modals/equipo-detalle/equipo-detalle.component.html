@@ -1,0 +1,24 @@
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div *ngFor="let item of equipoId">
+        <h5>Equipo:</h5>
+        <div>{{item.name}}</div>
+        <hr>
+        <h5>Especificaciones generales:</h5>
+        <div class="row">
+          <div class="col s4">
+              <img [src]="item.main_image_resolutions.image_128">
+          </div>
+          <div class="col s8 pl-0">
+              <div *ngFor="let features of item.features">
+                <span><img class="iconEspecificacion" [src]="features.file.image_resolutions.image_24"></span> {{features.description}}
+              </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect  btn-flat">Cerrar</a>
+    </div>
+  </div>
