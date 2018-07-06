@@ -14,6 +14,7 @@ import { ServiciosService } from './services/servicios.service';
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
 import { MzModalModule } from 'ngx-materialize';
 import { MzSidenavModule } from 'ngx-materialize';
+import { MzSelectModule } from 'ngx-materialize'
 
 
  
@@ -53,6 +54,7 @@ import { DevicesCatalogueVersionComponent } from './components/charts/devices-ca
 import { EstadoEquiposComponent } from './components/estado-equipos/estado-equipos.component';
 import { TopDesconectadosComponent } from './components/charts/top-desconectados/top-desconectados.component';
 /**/
+
 
 
 
@@ -114,7 +116,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MzButtonModule,
     MzModalModule,
-    MzSidenavModule
+    MzSidenavModule,
+    MzSelectModule
     
   ],
   providers: [

@@ -5,6 +5,7 @@ import { HttpClient} from "@angular/common/http";
 import { Catalogo,Equipos, Element } from '../../models/models';
 
 
+
 //import { MzModalService } from 'ngx-materialize';
 //import { EquipoDetalleComponent } from '../../components/shared/modals/equipo-detalle/equipo-detalle.component';
 
@@ -45,6 +46,19 @@ export class AdscreenComponent implements OnInit, OnChanges {
   'cuotaequipoliberado','precioventaliberado','accesoriodestacado','tipoprecio']*/
 
 
+
+  public sucursal2:any;
+  onChange(idSucursalSelect) {
+    console.log(idSucursalSelect);
+    this.idSucursal = +idSucursalSelect; 
+  }
+
+
+
+
+
+
+
   public Allequipments = [];
   @Input() public idSucursal:any;
 
@@ -81,33 +95,10 @@ export class AdscreenComponent implements OnInit, OnChanges {
   public ELEMENT_DATA:any;
   
 
-
   constructor( private http : HttpClient,  private ServiciosService: ServiciosService) {//private modalService: MzModalService
 
   }
-  /*
-  public openServiceModal() {
-    this.modalService.open(EquipoDetalleComponent);
-  }*/
 
-  
-/*
-  public modalOptions: Materialize.ModalOptions = {
-    dismissible: true, // Modal can be dismissed by clicking outside of the modal
-    opacity: .5, // Opacity of modal background
-    inDuration: 300, // Transition in duration
-    outDuration: 200, // Transition out duration
-    startingTop: '100%', // Starting top style attribute
-    endingTop: '10%', // Ending top style attribute
-    ready: (modal, trigger) => { // Callback for Modal open. Modal and trigger parameters available.
-      //alert('Ready');
-      console.log(modal, trigger);
-    },
-    complete: () => { /*alert('Closed'); } // Callback for Modal close
-  };
-  */
-
- 
 
   ngOnInit() {
 
@@ -129,10 +120,11 @@ export class AdscreenComponent implements OnInit, OnChanges {
       }
       
     );  
+
+    this.sucursal2 = JSON.parse(localStorage.getItem('sucursales'));
+    console.log(this.sucursal2 );
   }
  
-
-
   
   ngOnChanges(){
     this.equipos = [];
@@ -231,6 +223,7 @@ export class AdscreenComponent implements OnInit, OnChanges {
     this.idItem = id;
     this.idSucursal = id;
     console.log("equipo", id);
+    
   }
 
 
