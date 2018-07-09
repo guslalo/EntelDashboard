@@ -38,7 +38,6 @@ export class provider{
   name:string;
  }
 
-
 //quipment_details
 export class Equipment_details{
   id: number;
@@ -52,8 +51,6 @@ export class Equipment_details{
   adscreen:Adscreen[];
 }
 
-
-
 export class Adscreen {
   id:number;
   program:boolean;
@@ -62,6 +59,7 @@ export class Adscreen {
   equipment_plan:Equipment_plan[];
   accessory_details:Accessory_details[];
 }
+
 export class Accessory_details {
   accessory_name:string;
   type_price:type_price;
@@ -69,6 +67,7 @@ export class Accessory_details {
 export class type_price {
   name:string;
 }
+
 export class Equipment_plan {
   price_1:string;
 }
@@ -103,49 +102,11 @@ export interface Element {
   accesoriodestacado: string;
   tipoprecio: string;
 }
-/*
-export class Features{
-  id:number;                         
-  equipment:number;
-  description:string;
-  file:file;
+
+export class device {
+  id: number;
+  internal_id: number;
+  name: string;
+  connected: number;
+  disconnected: number;
 }
-export class file {
-  id:number;
-  file:string;
-  name:string;
-  created:Date;
-  modified:Date;
-  is_removed:boolean;
-  organization:number;
-  //image_resolutions:image_resolutions; 
-}
-
-export class image_resolutions{
-  image_16:string;
-  image_24:string;
-  image_32:string;
-  image_64:string;
-  image_128:string;
-  image_256:string;
-  image_512:string;
-  image_720:string;
-  image_1280:string;
-  image_1440:string;
-  image_1920:string;
-  image_2048:string;
-  image_3840:string;
-  image_4096:string;
-  image_7680:string;
-}
-
-
-//marca provider
-export class provider {
-  id:number;
-  logo:string;
-  name:string;
-}
-
-
-*/

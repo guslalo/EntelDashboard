@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-//import { single } from './data';
+import { ServiciosService } from '../../../services/servicios.service';
+import { device } from '../../../models/models';
 
 export var single = [
   {
@@ -48,12 +49,7 @@ export var single = [
 
 
 export class TopDesconectadosComponent implements OnInit {
-  ngOnInit() {
-  }
-  /*
-  constructor() { }
-
- */
+  public deviceEstado: device[] = [];
   single: any[];
   multi: any[];
 
@@ -63,20 +59,54 @@ export class TopDesconectadosComponent implements OnInit {
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   xAxisLabel = 'Cantidad desconectados';
   showYAxisLabel = true;
-  yAxisLabel = 'Sucursales';
+  yAxisLabel = 'Desconectados';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor() {
-    Object.assign(this, { single })
+  constructor( private ServiciosService: ServiciosService) {
+   
   }
 
+  ngOnInit() {
+
+    this.ServiciosService.devicesDisconnected2().subscribe(
+      data => {
+        this.deviceEstado = data.results;
+        this.single = data;
+        let array_sucursal = [];
+        let count = 0;
+        for(let item of this.deviceEstado){
+          count ++ 
+            if(count <= 10){
+              console.log (count);
+              array_sucursal.push({
+                "name":item.name,
+                "value":item.disconnected
+              }); 
+            }
+        }
+        this.single = array_sucursal;
+        Object.assign(this.single)
+      },
+      error => {
+        console.log(<any>error);
+      }
+      
+    ); 
+  }
+  /*
+  constructor() { }
+
+ */
+ 
+
+ 
   onSelect(event) {
     console.log(event);
   }

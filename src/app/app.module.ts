@@ -7,31 +7,19 @@ import { HttpClientModule, HttpHeaders } from "@angular/common/http";
 //servicios
 import { ServiciosService } from './services/servicios.service';
 
-//material angular
-
-
-//ngx materialize
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
 import { MzModalModule } from 'ngx-materialize';
 import { MzSidenavModule } from 'ngx-materialize';
 import { MzSelectModule } from 'ngx-materialize'
 
-
- 
-
-
-
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
-import { RinnoInterceptor } from './services/interceptor';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from './services/auth.guard';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot  } from '@angular/router'
-
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -53,37 +41,14 @@ import { DevicesCatalogueVersionComponent } from './components/charts/devices-ca
 
 import { EstadoEquiposComponent } from './components/estado-equipos/estado-equipos.component';
 import { TopDesconectadosComponent } from './components/charts/top-desconectados/top-desconectados.component';
-/**/
-
-
-
-
-
-
-
-
-
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'DashboardComponent', component: DashboardComponent},
   { path: 'login', component: LoginComponent},
   { path: 'adscreen', component: AdscreenComponent},
- 
-  /*{ path: 'rutas-experiencias',component: ExperienciasComponent},
-  { path: 'rutas-experiencias/:id', component: ExperienciasComponent },
-  {
-    path: 'heroes',
-    component: ,|
-    data: { title: 'Heroes List' }
-  },
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full'
-  },*/
-  { path: '**', component:HomeComponent, data: { title: '' }   }
-];/**/
-
+  { path: '**', component:HomeComponent }
+];
 
 @NgModule({
   declarations: [
@@ -111,7 +76,7 @@ const appRoutes: Routes = [
     NgxChartsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false },//<-- debugging purposes only  CommonModule, 
+      { enableTracing: false },
     ), 
     BrowserAnimationsModule,
     MzButtonModule,
@@ -126,7 +91,7 @@ const appRoutes: Routes = [
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor, //RinnoInterceptor
+      useClass: JwtInterceptor, //Interceptor
       multi: true,
     }
   ],
@@ -146,5 +111,5 @@ export class AppModule {
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
     return false;
    }
-   /**/
+
  }

@@ -4,8 +4,6 @@ import { ServiciosService } from '../../services/servicios.service';
 import { HttpClient} from "@angular/common/http";
 import { Catalogo,Equipos, Element } from '../../models/models';
 
-
-
 //import { MzModalService } from 'ngx-materialize';
 //import { EquipoDetalleComponent } from '../../components/shared/modals/equipo-detalle/equipo-detalle.component';
 
@@ -28,7 +26,6 @@ export interface PeriodicElement {
   tipoprecio: string;
 }*/
 
-
 @Component({
   selector: 'app-adscreen',
   templateUrl: './adscreen.component.html',
@@ -45,25 +42,10 @@ export class AdscreenComponent implements OnInit, OnChanges {
   ,'blue','plandestacado','cuotaplandestacado','precioventaplandestacado',
   'cuotaequipoliberado','precioventaliberado','accesoriodestacado','tipoprecio']*/
 
-
-
   public sucursal2:any;
-  onChange(idSucursalSelect) {
-    console.log(idSucursalSelect);
-    this.idSucursal = +idSucursalSelect; 
-  }
-
-
-
-
-
-
-
+ 
   public Allequipments = [];
   @Input() public idSucursal:any;
-
-
-
 
 
   //catalogo
@@ -74,7 +56,6 @@ export class AdscreenComponent implements OnInit, OnChanges {
   public loading = false;
   public loadingComplete = false;
   public isLoading = true ;
-
 
 
   public idEquipo:any;
@@ -101,9 +82,8 @@ export class AdscreenComponent implements OnInit, OnChanges {
 
 
   ngOnInit() {
-
-    //$('.modal').modal();
-    this.ServiciosService.getStats(40).subscribe( //this.idSucursal
+    /*
+    this.ServiciosService.getStats(40).subscribe( 
       data => {
         localStorage.removeItem('equipos');
         this.isLoading = false;
@@ -120,17 +100,19 @@ export class AdscreenComponent implements OnInit, OnChanges {
       }
       
     );  
-
+    ;*/
     this.sucursal2 = JSON.parse(localStorage.getItem('sucursales'));
-    console.log(this.sucursal2 );
+    console.log(this.sucursal2 )
   }
- 
-  
-  ngOnChanges(){
+
+
+  onChange(idSucursalSelect) {
+    this.idSucursal = +idSucursalSelect; 
     this.equipos = [];
+
     if(this.idSucursal != null) {
       console.log(this.idSucursal);
-      this.ServiciosService.getStats(40).subscribe( //this.idSucursal
+      this.ServiciosService.getStats(this.idSucursal).subscribe( //this.idSucursal
         data => {
           localStorage.removeItem('equipos');
           this.isLoading = false;
@@ -139,7 +121,7 @@ export class AdscreenComponent implements OnInit, OnChanges {
           for(let item of this.catalogo){
             this.equipos = item.equipments;
           }
-          //console.log(this.equipos);
+          console.log(this.equipos);
 
 
           for(let item of this.equipos){
@@ -206,11 +188,15 @@ export class AdscreenComponent implements OnInit, OnChanges {
         
       );  
     }
+  }
+
+  
+  ngOnChanges(){
 
     //this.dataSource = new MatTableDataSource(JSON.parse(localStorage.getItem('equipos'))); 
   }
 
-/*
+  /*
   ngAfterViewInit () { 
 
     this.dataSource.paginator = this .paginator; 

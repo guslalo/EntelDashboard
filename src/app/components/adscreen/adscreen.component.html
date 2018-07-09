@@ -31,7 +31,6 @@
       </div>
  </div>
 
- 
 
   <div class="row">
     <div class="col s12">
@@ -211,36 +210,15 @@
   </div>    
 </div>
 
-<!--
-<mz-modal #detalleModal [fixedFooter]="false" [bottomSheet]="false" [options]="modalOptions">
-    <mz-modal-header>
-      <h4>Modal Title</h4>
-    </mz-modal-header>
-    <mz-modal-content>
-
-        <div class="modal-body" *ngFor="let item of equipoId">
-            <h4>Equipo:</h4>
-            <div>{{item.name}}</div>
-            <hr>
-            <h4>Especificaciones generales:</h4>
-            <div class="row">
-              <div class="col-4">
-                  <img [src]="item.main_image_resolutions.image_128">
-              </div>
-              <div class="col-8 pl-0">
-                  <div *ngFor="let features of item.features">
-                    <span><img class="iconEspecificacion" [src]="features.file.image_resolutions.image_24"></span> {{features.description}}
-                  </div>
-              </div>
-            </div>  
-          </div>
-    </mz-modal-content>
-    <mz-modal-footer>
-      <button mz-button [flat]="true" mz-modal-close>Cerrar</button>
-    </mz-modal-footer>
-  </mz-modal>
--->
-
+  <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
 
 <app-equipo-detalle [idItem]="idItem"></app-equipo-detalle><!---->
 
