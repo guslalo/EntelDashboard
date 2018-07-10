@@ -61,7 +61,7 @@ export class DevicesDisconnectedComponent implements OnInit {
       Ejemplo:
         this.FormService.devicesDisconnected('disconnect', 40)
     */
-   this.subscription = this.FormService.devicesDisconnected2().subscribe(
+   this.subscription = this.FormService.devicesDisconnected2('?query=all').subscribe(
      data => {
       this.deviceEstado = data.results;
       let totalDesconectados = 0;

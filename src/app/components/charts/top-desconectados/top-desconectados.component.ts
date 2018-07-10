@@ -75,7 +75,7 @@ export class TopDesconectadosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ServiciosService.devicesDisconnected2().subscribe(
+    this.ServiciosService.devicesDisconnected2('?query=disconnect&list=by_subsidiary&order_by=disconnected').subscribe(
       data => {
         this.deviceEstado = data.results;
         this.single = data;
