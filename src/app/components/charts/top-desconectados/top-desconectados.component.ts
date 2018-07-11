@@ -13,31 +13,6 @@ export var single = [
     "name": "Sucursal 1",
     "value":39,
     "id":0
-  },
-  {
-    "name": "Sucursal 3",
-    "value":38,
-    "id":1
-  },
-  {
-    "name": "Sucursal 4",
-    "value":37,
-    "id":2
-  },
-  {
-    "name": "Sucursal 5",
-    "value":36,
-    "id":4
-  },
-  {
-    "name": "Sucursal 0",
-    "value":35,
-    "id":5
-  },
-  {
-    "name": "Sucursal ",
-    "value":33,
-    "id":6
   }
 ];
 

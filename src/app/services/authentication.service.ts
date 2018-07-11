@@ -46,10 +46,9 @@ export class AuthenticationService {
 
         return this.http.post<any>('http://develop.rinnolab.cl/hxc/api/login_token/', { username: username, password: password })
             .map(data => {
-                 //console.log(data.results);
-               // this.token = localStorage.setItem('token', JSON.stringify(data.token));
-
-               // console.log(data.token);
+                //console.log(data.results);
+                //this.token = localStorage.setItem('token', JSON.stringify(data.token));
+                // console.log(data.token);
                 // login successful if there's a jwt token in the response
                 if (data && data.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes

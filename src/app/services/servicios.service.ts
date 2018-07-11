@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs/Observable';
 
-const url = 'https://rinnolab.cl/'
+//const url = 'https://rinnolab.cl/'
 const url = 'http://develop.rinnolab.cl/'
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,16 +32,11 @@ export class ServiciosService {
     return this.http.get(url + '/hxc/api/user/' + id + '/');
   }
 
-   //devicesDisconnected
+  //devicesDisconnected
   devicesDisconnected2(query:string): Observable<any> {
     return this.http.get(url + '/ecommerce/api/latest_device_data/'+query,{ headers:this.headers});
   } 
   
-  /*
-  devicesDisconnected2(): Observable<any> {
-    return this.http.get(url + '/ecommerce/api/latest_device_data/?query=disconnect',{ headers:this.headers});
-  }*/
- 
   devicesDisconnected(query: string, subsidiary_id?: number): Observable<any> {
     let url_api = '/ecommerce/api/latest_device_data/?query=' + query;
     if (subsidiary_id) {
@@ -47,6 +44,5 @@ export class ServiciosService {
     }
     return this.http.get(url + url_api);
   }
-
 
 }

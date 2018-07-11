@@ -2,17 +2,13 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ServiciosService } from '../../services/servicios.service'; 
-/*
-import { AuthenticationService } from '../../services/authentication.service';
-import { AlertService } from '../../services/alert.service';/*
-import { FormService } from '../../services/servicios.service'; */
- 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   constructor(
@@ -38,8 +34,11 @@ export class LoginComponent implements OnInit {
 
     public token:any;
     public tokenStorage:any;
+    public url:any;
 
 
+
+   
     /*,
     private alertService: AlertService
     
@@ -47,7 +46,12 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService*/
 
   ngOnInit() {
-   this.authenticationService.logout();
+    //this.url = 'https://rinnolab.cl/'
+    this.url  = 'http://develop.rinnolab.cl/';
+    localStorage.setItem('url', JSON.stringify(this.url));   
+    console.log(JSON.parse(localStorage.getItem('url')));
+  
+    this.authenticationService.logout();
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
      /*
@@ -134,29 +138,3 @@ export class LoginComponent implements OnInit {
 
 }
 
-/*
- 
- //encapsulation: ViewEncapsulation.Emulated,
-export class LoginComponent implements OnInit {
-    model: any = {};
-    loading = false;
-    returnUrl: string;
-    //this._ref.destroy(); 
-
-    constructor(
-        private route: ActivatedRoute,
-        private FormsService: FormService,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
- 
-    ngOnInit() {
-        this.authenticationService.logout();
- 
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-    }
- 
-    
-  
-}*/
