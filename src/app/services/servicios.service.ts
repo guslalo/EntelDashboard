@@ -36,13 +36,11 @@ export class ServiciosService {
   devicesDisconnected2(query:string): Observable<any> {
     return this.http.get(url + '/ecommerce/api/latest_device_data/'+query,{ headers:this.headers});
   } 
+
+   //catalogos
+   catalogue(query:string): Observable<any> {
+    return this.http.get(url + '/ecommerce/api/catalogue/'+query,{ headers:this.headers});
+  } 
   
-  devicesDisconnected(query: string, subsidiary_id?: number): Observable<any> {
-    let url_api = '/ecommerce/api/latest_device_data/?query=' + query;
-    if (subsidiary_id) {
-      url_api = url_api + '&subsidiary_id=' + subsidiary_id;
-    }
-    return this.http.get(url + url_api);
-  }
 
 }

@@ -30,7 +30,7 @@ export class DevicesCatalogueVersionComponent implements OnInit {
         this.FormService.devicesDisconnected('version_app', ID_SUCURSAL)
       Ejemplo:
         this.FormService.devicesDisconnected('version_app', 40)
-    */
+    
    this.subscription = this.FormService.devicesDisconnected('catalogue_app').subscribe(
      data => {
        let array_chart = [];
@@ -43,7 +43,7 @@ export class DevicesCatalogueVersionComponent implements OnInit {
       this.single = array_chart;
       Object.assign(this, {array_chart})
       },
-   );
+   );*/
 
  }
 
