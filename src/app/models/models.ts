@@ -85,6 +85,8 @@ export class Plan{
 export class Sucursal{
   id: number;
   name:string;
+  updated:number;
+  outdated:number;
 }
 
 export interface Element {
@@ -109,4 +111,12 @@ export class device {
   name: string;
   connected: number;
   disconnected: number;
+}
+
+
+export class catalogue {
+  current_version: number;
+  last_version: number;
+  remaining_versions: number;
+  version:string;
 }

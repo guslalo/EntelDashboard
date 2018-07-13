@@ -1,0 +1,25 @@
+<br>
+<table>
+    <thead>
+      <tr>
+          <th>Id</th>
+          <th>device_id</th>
+          <th>id_android</th>
+          <th>version_app</th>
+          <th>catalogue_version</th>
+          <th>subsidiary_id</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of lista">
+        <td>{{item.id}}</td>
+        <td>{{item.device_id}}</td>
+        <td>{{item.id_android}}</td>
+        <td>{{item.version_app}}</td>
+        <td>{{item.catalogue_version}}</td>
+        <td>{{item.subsidiary_id}}</td>
+      </tr>
+     
+    </tbody>
+  </table>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from '../../../services/servicios.service';
+import { HttpClient} from "@angular/common/http";
+import { catalogue } from '../../../models/models';
+
 
 @Component({
   selector: 'app-devices-catalogue-version',
@@ -9,15 +12,22 @@ import { ServiciosService } from '../../../services/servicios.service';
 
 export class DevicesCatalogueVersionComponent implements OnInit {
 
-  subscription;
   single: any = [];
-  view: any[] = [400, 400];
-  showLegend = true;
-  explodeSlices = false;
-  doughnut = false;
+  view: any[] = [, 300];
 
+  public catalogueVersion: catalogue[] = [];
+  public last_version:any;
+  public current_version:any;
+  public remaining_versions:any;
+  public version:any;
+
+
+
+  colorScheme = {
+    domain: ['#28a745', '#dc3545', '#C7B42C', '#AAAAAA']
+  };
   constructor(
-    private FormService: ServiciosService) {
+    private http : HttpClient,  private ServiciosService: ServiciosService) {
   }
 
   onSelect(event) {
@@ -25,26 +35,39 @@ export class DevicesCatalogueVersionComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-      Se puede realizar la consulta con el ID de sucursal:
-        this.FormService.devicesDisconnected('version_app', ID_SUCURSAL)
-      Ejemplo:
-        this.FormService.devicesDisconnected('version_app', 40)
+    this.ServiciosService.devicesDisconnected2('?query=catalogue_app').subscribe(
+      data => {
+       this.catalogueVersion = data.results;
+       for(let estado of this.catalogueVersion){
+         this.current_version = estado.current_version;
+         this.last_version = estado.last_version;
+         this.remaining_versions = estado.remaining_versions; 
+         this.version = estado.version; 
+       }
+       console.log(this.catalogueVersion);
+ 
+       let array_chart = [
+         {
+         "name": "V."+ this.version,
+         "value": this.current_version
+         },
+         {
+         "name": "V. anterior "+ this.version,
+         "value":this.last_version
+         },
+         {
+          "name": "Otras versiones",
+          "value":this.remaining_versions  
+         }
+      ]
+      
+       this.single = array_chart;
+       Object.assign(this, {array_chart})
     
-   this.subscription = this.FormService.devicesDisconnected('catalogue_app').subscribe(
-     data => {
-       let array_chart = [];
-      this.single = data;
-      for (let chart_value = 1; chart_value < data.results.length; chart_value++) {
-        array_chart.push({
-          "name": data.results[chart_value][0], 
-          "value": data.results[chart_value][1]}); 
-      }
-      this.single = array_chart;
-      Object.assign(this, {array_chart})
-      },
-   );*/
+       },
+    );
+    
 
- }
+  }
 
 }

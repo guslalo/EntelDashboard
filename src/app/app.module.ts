@@ -42,6 +42,8 @@ import { DevicesCatalogueVersionComponent } from './components/charts/devices-ca
 import { EstadoEquiposComponent } from './components/estado-equipos/estado-equipos.component';
 import { TopDesconectadosComponent } from './components/charts/top-desconectados/top-desconectados.component';
 import { ListaCatalogosComponent } from './components/lista-catalogos/lista-catalogos.component';
+import { ListaDispositivosComponent } from './components/lista-dispositivos/lista-dispositivos.component';
+import { CatalogueVersionSucursalComponent } from './components/charts/catalogue-version-sucursal/catalogue-version-sucursal.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -68,7 +70,9 @@ const appRoutes: Routes = [
     DevicesCatalogueVersionComponent,
     EstadoEquiposComponent,
     TopDesconectadosComponent,
-    ListaCatalogosComponent
+    ListaCatalogosComponent,
+    ListaDispositivosComponent,
+    CatalogueVersionSucursalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,21 @@
 
 <div class="row">
-  <div class="col s7"></div>
-  <div class="col s5">
-
-    <app-devices-disconnected></app-devices-disconnected>
+  <div class="col s12 l7">
+      <app-lista-dispositivos></app-lista-dispositivos>
+   
+  </div>
+  <div class="col s12 l5">
+    <!--todas las conexiones-->
+    <app-devices-disconnected></app-devices-disconnected><!--/todas las conexiones-->
     <hr>
-    <app-top-desconectados></app-top-desconectados>
-    
+    <!--top-desconectados-->
+    <app-top-desconectados></app-top-desconectados><!--/top-desconectados-->
+    <hr> 
+    <!-- versiones de catalogo--> 
+    <app-devices-catalogue-version></app-devices-catalogue-version><!--/versiones de catalogo--> 
     <hr>
-    
-    <app-devices-catalogue-version></app-devices-catalogue-version>
+    <!--catalogos desconectados por sucural --> 
+    <app-catalogue-version-sucursal></app-catalogue-version-sucursal><!--/catalogos desconectados por sucural --> 
    
   </div>
 </div>
