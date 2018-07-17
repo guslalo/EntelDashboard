@@ -17,7 +17,9 @@ export class DevicesCatalogueVersionComponent implements OnInit {
 
   public catalogueVersion: catalogue[] = [];
   public last_version:any;
+  public last_version_name:any; 
   public current_version:any;
+  public current_version_name:any;
   public remaining_versions:any;
   public version:any;
 
@@ -39,6 +41,8 @@ export class DevicesCatalogueVersionComponent implements OnInit {
       data => {
        this.catalogueVersion = data.results;
        for(let estado of this.catalogueVersion){
+         this.current_version_name = estado.current_version_name;
+         this.last_version_name = estado.last_version_name;
          this.current_version = estado.current_version;
          this.last_version = estado.last_version;
          this.remaining_versions = estado.remaining_versions; 
@@ -48,11 +52,11 @@ export class DevicesCatalogueVersionComponent implements OnInit {
  
        let array_chart = [
          {
-         "name": "V."+ this.version,
+         "name": "V."+ this.current_version_name,
          "value": this.current_version
          },
          {
-         "name": "V. anterior "+ this.version,
+         "name": "V."+ this.last_version_name,
          "value":this.last_version
          },
          {

@@ -25,7 +25,6 @@ export class Catalogo {
   equipments: Equipos[];
 }
 
-
 //equipo
 export class Equipos{
  id:number;
@@ -34,6 +33,7 @@ export class Equipos{
  equipment_details:Equipment_details[];
  /*features:Features[];*/
 }
+
 export class provider{
   name:string;
  }
@@ -113,10 +113,21 @@ export class device {
   disconnected: number;
 }
 
-
 export class catalogue {
   current_version: number;
   last_version: number;
   remaining_versions: number;
   version:string;
+  last_version_name:string; 
+  current_version_name:string;
+}
+
+export class apk {
+  current_version:number;
+  remaining_versions: number;
+  id: number;
+  internal_id: number;
+  name:string;
+  updated:number;
+  outdated:number;
 }

@@ -44,6 +44,8 @@ import { TopDesconectadosComponent } from './components/charts/top-desconectados
 import { ListaCatalogosComponent } from './components/lista-catalogos/lista-catalogos.component';
 import { ListaDispositivosComponent } from './components/lista-dispositivos/lista-dispositivos.component';
 import { CatalogueVersionSucursalComponent } from './components/charts/catalogue-version-sucursal/catalogue-version-sucursal.component';
+import { ApkComponent } from './components/charts/apk/apk.component';
+import { ApkSucursalesComponent } from './components/charts/apk-sucursales/apk-sucursales.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -72,7 +74,9 @@ const appRoutes: Routes = [
     TopDesconectadosComponent,
     ListaCatalogosComponent,
     ListaDispositivosComponent,
-    CatalogueVersionSucursalComponent
+    CatalogueVersionSucursalComponent,
+    ApkComponent,
+    ApkSucursalesComponent
   ],
   imports: [
     BrowserModule,
